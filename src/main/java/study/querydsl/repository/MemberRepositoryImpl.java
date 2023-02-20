@@ -105,8 +105,8 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 .fetch();
 
         //카운트
-        JPAQuery<Member> countQuery = queryFactory
-                .select(member)
+        JPAQuery<Long> countQuery = queryFactory
+                .select(member.count())
                 .from(member)
                 .leftJoin(member.team, team)
                 .where(
@@ -117,7 +117,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
                 );
 
 
-        return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchCount);
+        return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchOne);
 //        return new PageImpl<>(content, pageable, total);
     }
 
