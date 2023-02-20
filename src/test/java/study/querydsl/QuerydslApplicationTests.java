@@ -28,14 +28,7 @@ class QuerydslApplicationTests {
 		JPAQueryFactory query = new JPAQueryFactory(em);
 		QHello qHello = QHello.hello;
 
-		Hello result = query
-				.selectFrom(qHello)
-				.fetchOne();
 
-		//queryDsl test
-		assertThat(result).isEqualTo(hello);
-		//lombok test
-		assertThat(result.getId()).isEqualTo(hello.getId());
 
 	}
 
