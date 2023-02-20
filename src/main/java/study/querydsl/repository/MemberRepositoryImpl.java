@@ -106,7 +106,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
 
         //카운트
         JPAQuery<Long> countQuery = queryFactory
-                .select(member.count())
+                .select(member.count()) // 카운트 쿼리 변경사항
                 .from(member)
                 .leftJoin(member.team, team)
                 .where(
